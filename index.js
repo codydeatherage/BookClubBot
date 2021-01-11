@@ -28,7 +28,7 @@ client.once('ready', () => {
     else{
         //gets id of role named 'Discussion Leader'
         console.log(guild.roles.cache.find(r => r.name === 'Discussion Leader').id);
-        console.log(guild.roles.cache.find(r => r.id === '798213168421404702').name);
+        //console.log(guild.roles.cache.find(r => r.id === '798213168421404702').name);
         console.log('Role already exists!');
  
     }
@@ -82,7 +82,10 @@ client.on('message', message => {
         //gives the role id of the 'Discussion Leader' role
         let leaderRoleID = guild.roles.cache.find(r => r.name === 'Discussion Leader').id
         //gives the current holder of the role
-        let prevLeadID = cache.find(r => r._roles.includes(leaderRoleID)).user.id; 
+        let prevLeadID = '';
+        if(cache.find(r=>r._roles.includes(leaderRoleID))){
+            prevLeadID = cache.find(r => r._roles.includes(leaderRoleID)).user.id;
+        } 
         console.log('prevLeadID:', prevLeadID);
         //if theres is someone with the role currently
         if(prevLeadID){
